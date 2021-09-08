@@ -22,6 +22,12 @@ def logout_user(request):
 
 
 @csrf_exempt
+@login_required(login_url='/login/')
+def evento(request):
+    return render(request, 'evento.html')
+
+
+@csrf_exempt
 def submit_login(request):
     if request.POST:
         username = request.POST.get('username')
@@ -34,6 +40,22 @@ def submit_login(request):
             messages.error(request, "Usuário ou Senha Inválidos")
     return redirect('/')
 
+
+@csrf_exempt
+@login_required(login_url='/login/')
+def submit_evento(request):
+    if request.POST:
+        titulo = request.POST.get('titulo')
+        data_evento = request.POST.get('data_evento')
+        descricao = request.POST.get('descricao')
+        usuario = request.user
+        Evento.objects.create(
+            titulo=titulo,
+            data_evento=data_evento,
+            descricao=descricao,
+            usuario=usuario
+        )
+    return redirect('/')
 
 @csrf_exempt
 def local_evento(request, titulo):
