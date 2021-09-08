@@ -5,26 +5,32 @@
     <title>Agenda</title>
 </head>
 <body>
-    <h1>Login</h1>
-    <form action="submit" method="post">{% csrf_token %}
-        <div align="center">
-            <label>Usuário: </label>
-            <input type="text" name="username"><br>
-            <label>Senha: </label>
-            <input type="password" name="password"><br>
-            <button type="submit">Entrar</button>
-        </div>
-    </form>
-
-    {% for message in messages %}
-        <div align="center">
-            <strong>Erro! </strong>{{ message }}
-        </div>
-    {% endfor %}
-    <div align="right">
-        <a  href="/admin">
-            <button type="button">Admin</button>
-        </a>
+<h1>Login</h1>
+<form action="submit" method="post">{% csrf_token %}
+    <div align="center">
+        <label>Usuário: </label>
+        <input type="text" name="username"><br>
+        <label>Senha: </label>
+        <input type="password" name="password"><br>
+        <button type="submit">Entrar</button>
     </div>
+</form>
+
+{% for message in messages %}
+    <div align="center">
+        <strong>Erro! </strong>{{ message }}
+    </div>
+{% endfor %}
+<div align="right">
+    <a href="/admin">
+        <button type="button">Admin</button>
+    </a>
+    <a href="https://github.com/GS-suzuki13">
+        <button type="button">GitHub</button>
+    </a>
+    <a href="https://www.instagram.com/gustavosuzuki3/">
+        <button type="button">Instagram</button>
+    </a>
+</div>
 </body>
 </html>
